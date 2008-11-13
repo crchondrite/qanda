@@ -2,8 +2,10 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.xml
   def index
-    @questions = Question.find(:all)
+    @questions = Question.find(:all) 
 
+    @answerable_questions, @answered_questions = divide_questions
+   
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @questions }
@@ -25,7 +27,6 @@ class QuestionsController < ApplicationController
   # GET /questions/new.xml
   def new
     @question = Question.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @question }
@@ -91,5 +92,24 @@ class QuestionsController < ApplicationController
       format.html { redirect_to(questions_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def divide_questions
+    identity_url = session[:identity_url]
+    answerable_questions = Array.new
+    answered_questions = Array.new
+    
+    @questions.each do |question|
+      if question.viewer_regexs.any?{|regex| regex.regex =~ /#{identity_url}/}
+        if question.answers.any?{|answer| answer.identity_url =~ /#{identity_url}/}
+          answered_questions << question
+        else
+          answerable_questions << question
+        end
+      end  
+    end
+    return answerable_questions, answered_questions  
   end
 end

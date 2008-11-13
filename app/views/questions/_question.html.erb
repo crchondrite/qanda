@@ -1,0 +1,9 @@
+<tr>
+  <td><%=h question.title %></td>
+  <td><%=h question.identity_url %></td>
+  <td><%= link_to 'Show', question %></td>
+  <td><%= link_to 'Edit', edit_question_path(question) %></td>
+  <td><%= link_to 'Anser', new_question_answer_path(question) %></td>
+  <td><%= link_to 'Anser list', question_answers_path(question) %></td>
+  <td><%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>

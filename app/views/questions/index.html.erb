@@ -1,21 +1,28 @@
 <h1>Listing questions</h1>
+<table>
+  <h3>answerable questions</h3>
+  <tr>
+    <th>title</th>
+    <th>IdentityUrl</th>
+  </tr> 
+  <%= render :partial => 'question', :collection => @answerable_questions %>
+</table>
+<table>
+  <h3>answered questions</h3>
+  <tr>
+    <th>title</th>
+    <th>IdentityUrl</th>
+  </tr> 
+  <%= render :partial => 'question', :collection => @answered_questions %>
+</table>
 
 <table>
+  <h3>all questions</h3>
   <tr>
-    <th>Content</th>
+    <th>title</th>
     <th>IdentityUrl</th>
-  </tr>
-
-<% for question in @questions %>
-  <tr>
-    <td><%=h question.content %></td>
-    <td><%=h question.identity_url %></td>
-    <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Anser', new_question_answer_path(question) %></td>
-    <td><%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  </tr> 
+  <%= render :partial => @questions %>
 </table>
 
 <br />

@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+  <head>
+    <title><%=h "qanda" %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <%= stylesheet_link_tag "application" %>
+  </head>
+  <body>
+    <div id="head">
+      <span id="app_title">qanda</span>
+      <span id="identity_url">identity_url: <%=h session[:identity_url] %></span>
+    </div>
+    <div id="main">
+      <% %w(error notice info).each do |item| %>
+      <% if flash[item.to_sym] != nil %>
+      <div class="flash #{item}">
+        <h3><%=h flash[item.to_sym] %></h3>
+      </div>
+      <% end %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

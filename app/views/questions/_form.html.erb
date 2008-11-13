@@ -1,0 +1,19 @@
+<p>
+  <%= form.label :content %><br />
+  <%= form.text_area :content %>
+</p>
+<p>
+  <%= form.label :owner_regexs %><br />
+  <%= form.text_field :owner_regexs %>
+</p>
+<p>
+  <%= form.label :viewer_regexs %><br />
+  <%= form.text_field :viewer_regexs %>
+</p>
+
+<%= javascript_include_tag "fckeditor/fckeditor" %>
+<script type="text/javascript">
+FCKeditor.BasePath = "/javascripts/fckeditor/";
+var fckEditor = new FCKeditor('question_content');
+fckEditor.ReplaceTextarea();
+</script>

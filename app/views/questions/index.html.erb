@@ -1,0 +1,23 @@
+<h1>Listing questions</h1>
+
+<table>
+  <tr>
+    <th>Content</th>
+    <th>IdentityUrl</th>
+  </tr>
+
+<% for question in @questions %>
+  <tr>
+    <td><%=h question.content %></td>
+    <td><%=h question.identity_url %></td>
+    <td><%= link_to 'Show', question %></td>
+    <td><%= link_to 'Edit', edit_question_path(question) %></td>
+    <td><%= link_to 'Anser', new_question_answer_path(question) %></td>
+    <td><%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New question', new_question_path %>

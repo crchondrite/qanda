@@ -1,0 +1,31 @@
+<p>
+  <b>Content:</b>
+  <p>
+    <%=h @question.content %>
+  </p>
+</p>
+<p>
+  <b>IdentityUrl:</b>
+  <p>
+    <%=h @question.identity_url %>
+  </p>
+</p>
+<p>
+  <b>OwnerRegex:</b>
+  <% @question.owner_regexs.each do |regex| -%>
+  <p>
+    <%=h regex.regex %>
+  </p>
+  <% end %>
+</p>
+<p>
+  <b>ViewerRegex:</b>
+  <% @question.viewer_regexs.each do |regex| -%>
+  <p>
+    <%=h regex.regex %>
+  </p>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

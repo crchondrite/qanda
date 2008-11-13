@@ -1,0 +1,12 @@
+<p>
+  <b>Content:</b>
+  <%=h @answer.content %>
+</p>
+<p>
+  <b>IdentityUrl:</b>
+  <%=h @answer.identity_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', answers_path %>

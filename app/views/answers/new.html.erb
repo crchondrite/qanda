@@ -1,0 +1,13 @@
+<h1>New answer</h1>
+
+<% form_for(@answer, :url => question_answer_url(@question, @answer), :method => :put) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= @question.content %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
